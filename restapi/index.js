@@ -33,6 +33,7 @@ app.get("/api/sensordata", (req, res, next) => {
         }
         res.json({
             "message":"success",
+            "count":rows.length,
             "data":rows
         })
       });

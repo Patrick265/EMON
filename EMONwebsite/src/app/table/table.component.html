@@ -1,8 +1,7 @@
-<p>table</p>
-<p>{{message}}</p>
-<p>{{value}}</p>
-<p>{{test}}</p>
 
-<div *ngFor="let item of value| keyvalue">
-    {{ item.key }} - {{ item.value }}
-  </div>
+<p>status of the api call: {{fullMessage.message}}</p>
+<p>amount of records: {{fullMessage.count}}</p>
+
+<p>first record: id={{fullMessage.data[0].id}}, uuid={{fullMessage.data[0].uuid}}, name={{fullMessage.data[0].name}}, watt={{fullMessage.data[0].watt}}, energy={{fullMessage.data[0].totalEnergyUse}}</p>
+
+
