@@ -1,0 +1,8 @@
+<p>table</p>
+<p>{{message}}</p>
+<p>{{value}}</p>
+<p>{{test}}</p>
+
+<div *ngFor="let item of value| keyvalue">
+    {{ item.key }} - {{ item.value }}
+  </div>
