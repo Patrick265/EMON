@@ -14,30 +14,50 @@ class dbManager:
                                 totalEnergyUse integer NOT NULL,
                                 returnedEnergy integer NOT NULL
                             );"""
+        self.conn = self.create_connection()
 
-    def create_connection(self, db_file):
+    def create_connection(self):
         conn = None
         try:
-            conn = sqlite3.connect(db_file)
+            conn = sqlite3.connect(self.dbLocation)
             return conn
         except Error as e:
             print(e)
 
             return conn
 
-    def create_table(self, conn):
+
+    def create_table(self):
         try:
             c = self.conn.cursor()
             c.execute(self.dbCreate)
         except Error as e:
             print(e)
 
-    def setup(self):
-        self.conn = self.create_connection(self.dbLocation)
-        if self.conn is not None:
-            # create projects table
-            self.create_table(self.conn)
 
-            # create tasks table
+    def insert_data(self, uuid, name, watt, totalEnergyUse, returnedEnergy):
+        sql = ''' INSERT INTO sensordata(uuid,name,watt,totalEnergyUse,returnedEnergy)
+                    VALUES(?,?,?,?,?) '''
+        cur = self.conn.cursor()
+
+        cur.execute(sql, (str(uuid), str(name), watt,
+                          totalEnergyUse, returnedEnergy))
+        self.conn.commit()
+        return cur.lastrowid
+
+
+    def setup(self):
+        if self.conn is not None:
+            self.create_table()
         else:
             print("Error! cannot create the database connection.")
+
+
+    def show_all_data(self):
+        cur = self.conn.cursor()
+        cur.execute("SELECT * FROM sensordata")
+
+        rows = cur.fetchall()
+
+        for row in rows:
+            print(row)
