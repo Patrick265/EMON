@@ -21,6 +21,44 @@ app.get("/", (req, res, next) => {
     console.log("start page")
 });
 
+app.get("/api/sensors", (req, res, next) => {
+    console.log('Getting sensors from database')
+    var sql = "select * from smart_sensors"
+    var params = []
+    console.log("trying to get data")
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "count":rows.length,
+            "data":rows
+        })
+    });
+});
+
+app.get("/api/data/?", (req, res, next) => {
+    console.log('Getting data from database')
+    let sensor = req.query.sensor
+    var sql = "select * from " + sensor
+    var params = []
+    console.log("data from sensor: " + sensor)
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "count":rows.length,
+            "data":rows
+        })
+      });
+});
+
+/*
 app.get("/api/sensordata", (req, res, next) => {
     console.log('Getting data from database')
     var sql = "select * from sensordata"
@@ -38,6 +76,7 @@ app.get("/api/sensordata", (req, res, next) => {
         })
       });
 });
+*/
 
 // Insert here other API endpoints
 

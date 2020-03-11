@@ -1,4 +1,5 @@
 import sqlite3
+import paho.mqtt.client as mqttClient
 from sqlite3 import Error
 
 
@@ -61,3 +62,5 @@ class dbManager:
 
         for row in rows:
             print(row)
+
+    

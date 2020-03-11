@@ -1,7 +1,9 @@
 
+<p>First sensor name: {{sensorName}}</p>
+
 <p>status of the api call: {{fullMessage.message}}</p>
 <p>amount of records: {{fullMessage.count}}</p>
 
-<p>first record: id={{fullMessage.data[0].id}}, uuid={{fullMessage.data[0].uuid}}, name={{fullMessage.data[0].name}}, watt={{fullMessage.data[0].watt}}, energy={{fullMessage.data[0].totalEnergyUse}}</p>
+<p>first record: id={{fullMessage.data[0].id}}, time={{fullMessage.data[0].time}}, temp={{fullMessage.data[0].temperature}}, hum={{fullMessage.data[0].humidity}}, watt={{fullMessage.data[0].watt}}, energy={{fullMessage.data[0].totalEnergyUse}}, energyback={{fullMessage.data[0].returnedEnergy}}</p>
 
 

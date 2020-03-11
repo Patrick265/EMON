@@ -16,33 +16,44 @@ import {SensorData} from '../shared/models/sensorData.model';
 })
 export class TableComponent implements OnInit {
   value;
+  sensorName;
   fullMessage: FullMessage = new FullMessage();
-  valid = '{"message":"success","data":[{"id":1,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":2,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":3,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":4,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":5,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":6,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":7,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":8,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":9,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":10,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":11,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878},{"id":12,"uuid":"1","name":"SKRA MT382","watt":20,"totalEnergyUse":5000,"returnedEnergy":7878}]}';
-
   constructor(public client: HttpClient,) { }
 
   ngOnInit() {
-    this.getData();
+    this.getSensors();
+    
   }
 
-  //Gets all the data from the database and puts it in the fullMessage model for later use
-  getData() {
-    this.value = this.client.get("http://localhost:8000/api/sensordata/").subscribe(val => {
+  //Gets all the sensornames that are saved in the database and have an own table, first entrie is used to get the data. Later this list should be clickable by user and then get data
+  getSensors(){
+    this.value = this.client.get("http://localhost:8000/api/sensors").subscribe(val => {
+      this.sensorName = JSON.parse(JSON.stringify(val));
+      this.sensorName = this.sensorName["data"][0]["name"];
+      this.getData(this.sensorName);
+    });
+  }
+
+  //Gets all the data from sensor of the parameter: name. This data is saved in the FullMessage model for later showing
+  getData(name: string) {
+    console.log("send name: " + name);
+    this.value = this.client.get("http://localhost:8000/api/data/?sensor=" + name + "_data").subscribe(val => {
       this.value = JSON.parse(JSON.stringify(val));
       console.log("real data: " + this.value["data"][0]["watt"]);
-      console.log("real data: " + this.value["data"][0]["uuid"]);
-      console.log("real data: " + this.value["data"][0]["name"]);
-      console.log("real data: " + this.value["data"][0]["totalEnergyUse"]);
+      console.log("real data: " + this.value["data"][0]["time"]);
+      console.log("real data: " + this.value["data"][0]["temperature"]);
+      console.log("real data: " + this.value["data"][0]["totalEnergy"]);
       this.fullMessage.message = this.value["message"];
       this.fullMessage.count = this.value["count"];
       this.fullMessage.data = new Array<SensorData>();
       for(var i=0; i<this.value["count"]-1; i++){
         var sensData: SensorData = new SensorData();
           sensData.id = this.value["data"][i]["id"];
-          sensData.uuid = this.value["data"][i]["uuid"];
-          sensData.name = this.value["data"][i]["name"];
+          sensData.time = this.value["data"][i]["time"];
+          sensData.temperature = this.value["data"][i]["temperature"];
+          sensData.humidity = this.value["data"][i]["humidity"];
           sensData.watt = this.value["data"][i]["watt"];
-          sensData.totalEnergyUse = this.value["data"][i]["totalEnergyUse"];
+          sensData.totalEnergyUse = this.value["data"][i]["totalEnergy"];
           sensData.returnedEnergy = this.value["data"][i]["returnedEnergy"];
           this.fullMessage.data.push(sensData);
       }

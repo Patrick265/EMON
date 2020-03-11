@@ -1,6 +1,6 @@
 var sqlite3 = require('sqlite3').verbose()
 
-const DBSOURCE = "../database/emon.db"
+const DBSOURCE = "../database/emonv2.db"
 
 let db = new sqlite3.Database(DBSOURCE, (err) => {
     if (err) {
@@ -9,7 +9,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
       throw err
     }else{
         console.log('Connected to the SQLite database.')
-        db.run(`CREATE TABLE IF NOT EXISTS sensordata (
+        /*db.run(`CREATE TABLE IF NOT EXISTS sensordata (
             id integer PRIMARY KEY AUTOINCREMENT,
             uuid text NOT NULL,
             name text NOT NULL,
@@ -25,7 +25,7 @@ let db = new sqlite3.Database(DBSOURCE, (err) => {
                 //var insert = 'INSERT INTO sensordata (uuid, name, watt, totalEnergyUse, returnedEnergy) VALUES (1, "SKRA MT382",20,5000,7878)'
                 //db.run(insert)//, ["uuid", "323432423"], ["name","SKRA MT382"], ["watt",20], ["totalEnergyUse",5600], ["returnedEnergy",7878])
             }
-        });  
+        });*/  
     }
 });
 
