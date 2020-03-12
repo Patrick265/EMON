@@ -29,7 +29,7 @@ export class TableComponent implements OnInit {
   getSensors(){
     this.value = this.client.get("http://localhost:8000/api/sensors").subscribe(val => {
       this.sensorName = JSON.parse(JSON.stringify(val));
-      this.sensorName = this.sensorName["data"][0]["name"];
+      this.sensorName = this.sensorName["data"][0]["table_name"];
       this.getData(this.sensorName);
     });
   }
@@ -37,7 +37,7 @@ export class TableComponent implements OnInit {
   //Gets all the data from sensor of the parameter: name. This data is saved in the FullMessage model for later showing
   getData(name: string) {
     console.log("send name: " + name);
-    this.value = this.client.get("http://localhost:8000/api/data/?sensor=" + name + "_data").subscribe(val => {
+    this.value = this.client.get("http://localhost:8000/api/data/?sensor=" + name).subscribe(val => {
       this.value = JSON.parse(JSON.stringify(val));
       console.log("real data: " + this.value["data"][0]["watt"]);
       console.log("real data: " + this.value["data"][0]["time"]);

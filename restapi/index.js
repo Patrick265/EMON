@@ -15,17 +15,18 @@ app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
   });
+
 // Root endpoint
 app.get("/", (req, res, next) => {
     res.json({"message":"Ok"})
     console.log("start page")
 });
 
+// Gets all the smart sensors in the database
 app.get("/api/sensors", (req, res, next) => {
-    console.log('Getting sensors from database')
     var sql = "select * from smart_sensors"
     var params = []
-    console.log("trying to get data")
+    console.log("[GET] all sensors")
     db.all(sql, params, (err, rows) => {
         if (err) {
           res.status(400).json({"error":err.message});
@@ -39,12 +40,30 @@ app.get("/api/sensors", (req, res, next) => {
     });
 });
 
+// Gets the last record (last alive) from a specefic sensor. Needs parameter: sensor=
+app.get("/api/last/?", (req, res, next) => {
+    let sensor = req.query.sensor
+    var sql = "SELECT * FROM " + sensor + " ORDER BY ID DESC LIMIT 1"
+    var params = []
+    console.log("[GET] last record from sensor: " + sensor)
+    db.all(sql, params, (err, rows) => {
+        if (err) {
+          res.status(400).json({"error":err.message});
+          return;
+        }
+        res.json({
+            "message":"success",
+            "data":rows
+        })
+      });
+});
+
+// Gets all the records from a specific sensor. Needs parameter: sensor=
 app.get("/api/data/?", (req, res, next) => {
-    console.log('Getting data from database')
     let sensor = req.query.sensor
     var sql = "select * from " + sensor
     var params = []
-    console.log("data from sensor: " + sensor)
+    console.log("[GET] data from sensor: " + sensor)
     db.all(sql, params, (err, rows) => {
         if (err) {
           res.status(400).json({"error":err.message});
@@ -77,8 +96,6 @@ app.get("/api/sensordata", (req, res, next) => {
       });
 });
 */
-
-// Insert here other API endpoints
 
 // Default response for any other request
 app.use(function(req, res){

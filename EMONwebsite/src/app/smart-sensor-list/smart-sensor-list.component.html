@@ -1,0 +1,7 @@
+<p>smart-sensor-list works!</p>
+<p>length: {{count}}</p>
+<div class="row">
+    <div class="col-xs-12">
+      <app-smart-sensor *ngFor="let s of smartSensors" [sensor]="s"></app-smart-sensor>
+    </div>
+  </div>

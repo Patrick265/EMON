@@ -5,11 +5,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
+import { SmartSensorComponent } from './smart-sensor-list/smart-sensor/smart-sensor.component';
+import { SmartSensorListComponent } from './smart-sensor-list/smart-sensor-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent
+    TableComponent,
+    SmartSensorComponent,
+    SmartSensorListComponent
   ],
   imports: [
     BrowserModule,
