@@ -4,6 +4,14 @@
 #define SSID			"DaVinkie"
 #define SSID_PASS		"2FC62ADC33AF"
 
+// #define MQTT_SERVER		"sendlab.avansti.nl"
+// #define MQTT_PORT		11883
+// #define MQTT_USER		"smartmeter_admin"
+// #define MQTT_PASSWORD	"s3_sm4rtm3t3r"
+// #define MQTT_TOPIC		"smartmeter/log"
+// #define MQTT_MAX_PACKET_SIZE 512
+
+//PAUL MQTT Broker
 #define MQTT_SERVER		"iot.paulhobbel.me"
 #define MQTT_PORT		1883
 #define MQTT_USER		""

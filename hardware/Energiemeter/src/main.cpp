@@ -69,7 +69,7 @@ void loop() {
 		doc["id"].set("TIMDB_PATJON_EMON");
 		doc["identification"].set("ISKRA-MT382");
 		//doc["timestamp"].set("timestamp");
-        doc["kwh"].set(metervalue/500);
+        doc["watt"].set(((metervalue/500) * 1000)*12);
 		doc["signature"].set("2019-ETI-EMON-V01-TIMDB-PATJON");
 
 		size_t n = serializeJson(doc, buffer);
@@ -80,7 +80,7 @@ void loop() {
 		timerTracker=0;
 	}
 	client.loop();
-	delay(100);
+	delay(10);
 }
 
 void readPhotoSensor() {

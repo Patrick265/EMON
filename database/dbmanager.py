@@ -5,62 +5,68 @@ from sqlite3 import Error
 
 class dbManager:
 
-    def __init__(self, location):
-        self.dbLocation = location
-        self.dbCreate = """CREATE TABLE IF NOT EXISTS sensordata (
-                                id integer PRIMARY KEY AUTOINCREMENT,
-                                uuid text NOT NULL,
-                                name text NOT NULL,
-                                watt integer NOT NULL,
-                                totalEnergyUse integer NOT NULL,
-                                returnedEnergy integer NOT NULL
-                            );"""
-        self.conn = self.create_connection()
+	def __init__(self, location):
+		self.dbLocation = location
+		self.dbCreate = """CREATE TABLE IF NOT EXISTS sensordata (
+								id integer PRIMARY KEY AUTOINCREMENT,
+								message_id TEXT NOT_NULL,
+								energymeter_name TEXT NOT_NULL,
+								watt INTEGER NOT_NULL,
+								wH REAL NOT_NULL,
+								signature TEXT NOT_NULL,
+								timestamp TEXT NOT_NULL
+							);"""
+		self.conn = self.create_connection()
 
-    def create_connection(self):
-        conn = None
-        try:
-            conn = sqlite3.connect(self.dbLocation)
-            return conn
-        except Error as e:
-            print(e)
+	def create_connection(self):
+		conn = None
+		try:
+			conn = sqlite3.connect(self.dbLocation)
+			return conn
+		except Error as e:
+			print(e)
 
-            return conn
-
-
-    def create_table(self):
-        try:
-            c = self.conn.cursor()
-            c.execute(self.dbCreate)
-        except Error as e:
-            print(e)
+			return conn
 
 
-    def insert_data(self, uuid, name, watt, totalEnergyUse, returnedEnergy):
-        sql = ''' INSERT INTO sensordata(uuid,name,watt,totalEnergyUse,returnedEnergy)
-                    VALUES(?,?,?,?,?) '''
-        cur = self.conn.cursor()
+	def create_table(self):
+		try:
+			c = self.conn.cursor()
+			c.execute(self.dbCreate)
+		except Error as e:
+			print(e)
 
-        cur.execute(sql, (str(uuid), str(name), watt,
-                          totalEnergyUse, returnedEnergy))
-        self.conn.commit()
-        return cur.lastrowid
+	def insert_data(self, message_id, energymeter_name, watt, wH, signature, timestamp):
+		sql = ''' INSERT INTO sensordata(message_id, energymeter_name, watt, wH, signature, timestamp)
+					VALUES(?,?,?,?,?,?)'''
+		try:
+			cur = self.conn.cursor()
+			result = cur.execute(sql, (str(message_id), str(energymeter_name), watt, wH,
+						  str(signature), str(timestamp)))
+			self.conn.commit()
+			result = self.conn.commit()
+			# return cur.lastrowid
+		except Error as e:
+			print(e)
+		except Exception as e:
+			print("Exception in _query: {e}")
+		
 
 
-    def setup(self):
-        if self.conn is not None:
-            self.create_table()
-        else:
-            print("Error! cannot create the database connection.")
+	def setup(self):
+		if self.conn is not None:
+			self.create_table()
+		else:
+			print("Error! cannot create the database connection.")
 
 
-    def show_all_data(self):
-        cur = self.conn.cursor()
-        cur.execute("SELECT * FROM sensordata")
+	def show_all_data(self):
+		cur = self.conn.cursor()
+		cur.execute("SELECT * FROM sensordata")
 
-        rows = cur.fetchall()
+		rows = cur.fetchall()
 
-        for row in rows:
-            print(row)
+		for row in rows:
+			print(row)
 
-    
+	
