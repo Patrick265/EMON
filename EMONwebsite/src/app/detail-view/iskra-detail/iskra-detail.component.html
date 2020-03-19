@@ -1,0 +1,60 @@
+<mat-card style="background-color: #e8eaf6; margin-right: 10px; margin-left: 10px;">
+    <mat-card-title>Insights of "{{sensorName}}"</mat-card-title> 
+    <mat-card-subtitle>Amount of energy records: {{iskraData.energyData.length}} 
+        
+    </mat-card-subtitle>
+    <mat-card-subtitle>Amount of temperature records: {{iskraData.temperatureData.length}}</mat-card-subtitle>
+</mat-card>
+
+<div class="row">
+    <div class="col-xs-6">
+<mat-card style="background-color: #e8eaf6; margin-left: 10px; margin-top: 10px;">
+    <mat-card-title>Energy records</mat-card-title>
+    
+
+        <table>
+            <tr>
+                <td>Id</td>
+                <td>Meter</td>
+                <td>Watt</td>
+                <td>wH</td>
+                <td>Total</td>
+                <td>Time</td>
+            </tr>
+            <tr *ngFor="let item of iskraData.energyData; let i = index">
+                
+              <td> {{item.messageId}} </td>
+              <td> {{item.energyMeter}} </td>
+              <td> {{item.watt}} </td>
+              <td> {{item.wH}} </td>
+              <td> {{item.total}} </td>
+              <td> {{item.timestamp}} </td>
+            </tr>
+          </table>
+
+     
+</mat-card>
+</div>
+<div class="col-xs-6">
+<mat-card style="background-color: #e8eaf6; margin-right: 10px; margin-top: 10px;">
+    <mat-card-title>Temperature records</mat-card-title>
+    <table>
+        <tr>
+            <td>Id</td>
+            <td>Outside temperature</td>
+            <td>Iniside temperature</td>
+            <td>Time</td>
+        </tr>
+        <tr *ngFor="let item of iskraData.temperatureData; let i = index">
+            
+          <td> {{item.messageId}} </td>
+          <td> {{item.outsideTemp}} </td>
+          <td> {{item.insideTemp}} </td>
+          <td> {{item.timestamp}} </td>
+        </tr>
+      </table>
+
+
+</mat-card>
+</div>
+</div>

@@ -1,9 +1,9 @@
-<a href="#" class="list-group-item clearfix">
-    <div class="pull-left" style="margin-right: 20px;">
-      <h4 class="list-group-item-heading">{{sensor.name}}</h4>
-      <p class="list-group-item-text">Database table: {{sensor.tableName}}</p>
-      <p class="list-group-item-text">Last alive: {{sensor.lastAlive}}</p>
-      <button class="btn btn-success" (click)="getData()">get data</button>
-    </div>
-    
-  </a>
+<mat-card style=" margin: 5px;" (click)= "clickedCard()">
+  <mat-card-title>{{sensor.name}}</mat-card-title> 
+  <p>
+    Last alive: {{sensor.lastAlive}} <br>
+    Total kwh: {{sensor.total}}
+  </p>
+  <mat-card-content></mat-card-content>
+
+</mat-card>

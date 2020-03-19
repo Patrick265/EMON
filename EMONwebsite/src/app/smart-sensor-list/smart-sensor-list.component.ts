@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SmartSensor } from '../shared/models/smartSensor.model';
 import { HttpClient } from '@angular/common/http';
 
@@ -11,6 +11,8 @@ export class SmartSensorListComponent implements OnInit {
   smartSensors: Array<SmartSensor> = new Array();
   constructor(public client: HttpClient,) { }
   count = this.smartSensors.length;
+  @Output() selectedDetail = new EventEmitter<string>();
+  
   ngOnInit() {
     this.getSensors();
   }
@@ -22,7 +24,7 @@ export class SmartSensorListComponent implements OnInit {
     for(var i=0; i<json["count"]; i++){
       var smartSensor: SmartSensor = new SmartSensor();
       smartSensor.name = json["data"][i]["name"];
-      smartSensor.tableName = json["data"][i]["table_name"];
+      smartSensor.original = json["data"][i]["original"];
       this.getFullSensor(smartSensor);
     }
   });
@@ -30,11 +32,17 @@ export class SmartSensorListComponent implements OnInit {
 
 // Gets the last alive value for a specific sensor and pushes the entire sensor to the smartSensor array for later use
 getFullSensor(sensor: SmartSensor){
-  this.client.get("http://localhost:8000/api/last/?sensor=" + sensor.tableName).subscribe(val => {
+  this.client.get("http://localhost:8000/api/last/?sensor=" + sensor.name).subscribe(val => {
     const json = JSON.parse(JSON.stringify(val));
-    sensor.lastAlive = json["data"][0]["time"];
+    sensor.lastAlive = json["data"][0]["timestamp"];
+    sensor.total = json["data"][0]["total"];
     this.smartSensors.push(sensor);
     this.count = this.smartSensors.length;
   });
+}
+
+onSelectedDetail(sensor: string) {
+  this.selectedDetail.emit(sensor);
+  console.log("2 emit: " + sensor);
 }
 }

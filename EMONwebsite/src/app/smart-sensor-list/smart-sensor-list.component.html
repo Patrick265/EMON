@@ -1,7 +1,9 @@
-<p>smart-sensor-list works!</p>
-<p>length: {{count}}</p>
-<div class="row">
+<mat-card style="margin-left: 10px; margin-right: 10px; background-color: #e8eaf6;">
+  <mat-card-subtitle>All sensors</mat-card-subtitle>
+  <div class="row">
     <div class="col-xs-12">
-      <app-smart-sensor *ngFor="let s of smartSensors" [sensor]="s"></app-smart-sensor>
+      <app-smart-sensor *ngFor="let s of smartSensors" [sensor]="s" (detail)="onSelectedDetail($event)"></app-smart-sensor>
     </div>
-  </div>
+</div>
+</mat-card>
+

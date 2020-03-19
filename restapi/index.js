@@ -23,6 +23,7 @@ app.get("/", (req, res, next) => {
 });
 
 // Gets all the smart sensors in the database
+/*
 app.get("/api/sensors", (req, res, next) => {
     var sql = "select * from smart_sensors"
     var params = []
@@ -39,12 +40,42 @@ app.get("/api/sensors", (req, res, next) => {
         })
     });
 });
+*/
+
+app.get("/api/sensors", (req, res, next) => {
+  /*var sql = "select * from smart_sensors"
+  var params = []
+  console.log("[GET] all sensors")
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          //"count":rows.length,
+          "count":1,
+          //"data":rows
+          "data":[{"name":"ISKRA-MT382","original":"true"}]
+      })
+  });*/
+  res.json({
+    "message":"success",
+    //"count":rows.length,
+    "count":1,
+    //"data":rows
+    "data":[{"name":"ISKRA-MT382","original":"true"}]
+})
+});
+
 
 // Gets the last record (last alive) from a specefic sensor. Needs parameter: sensor=
 app.get("/api/last/?", (req, res, next) => {
     let sensor = req.query.sensor
-    var sql = "SELECT * FROM " + sensor + " ORDER BY ID DESC LIMIT 1"
-    var params = []
+    // For our own original sensor
+    if(sensor === "ISKRA-MT382"){
+      var sql = "SELECT * FROM " + "iskra_energie ORDER BY ID DESC LIMIT 1"
+      var params = []
     console.log("[GET] last record from sensor: " + sensor)
     db.all(sql, params, (err, rows) => {
         if (err) {
@@ -56,14 +87,12 @@ app.get("/api/last/?", (req, res, next) => {
             "data":rows
         })
       });
-});
-
-// Gets all the records from a specific sensor. Needs parameter: sensor=
-app.get("/api/data/?", (req, res, next) => {
-    let sensor = req.query.sensor
-    var sql = "select * from " + sensor
+    }
+    else{
+      // For non original sensors
+    /*var sql = "SELECT * FROM " + sensor + " ORDER BY ID DESC LIMIT 1"
     var params = []
-    console.log("[GET] data from sensor: " + sensor)
+    console.log("[GET] last record from sensor: " + sensor)
     db.all(sql, params, (err, rows) => {
         if (err) {
           res.status(400).json({"error":err.message});
@@ -71,10 +100,54 @@ app.get("/api/data/?", (req, res, next) => {
         }
         res.json({
             "message":"success",
-            "count":rows.length,
             "data":rows
         })
-      });
+      });*/
+    }
+});
+
+// Gets all the records from the energy tabel of iskra
+app.get("/api/dataIE", (req, res, next) => {
+  console.log("[GET] data from sensor: ")
+    let sensor = req.query.sensor
+      var sql = "select * from iskra_energie"
+      var params = []
+      console.log("[GET] data from sensor: " + sensor)
+      db.all(sql, params, (err, rows) => {
+          if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+          }
+          res.json({
+              "message":"success",
+              "count":rows.length,
+              "data":rows
+          })
+        });
+    
+    
+});
+
+// Gets all the records from the temperature tabel of iskra
+app.get("/api/dataIT", (req, res, next) => {
+  console.log("[GET] data from sensor: ")
+    let sensor = req.query.sensor
+      var sql = "select * from iskra_temperature"
+      var params = []
+      console.log("[GET] data from sensor: " + sensor)
+      db.all(sql, params, (err, rows) => {
+          if (err) {
+            res.status(400).json({"error":err.message});
+            return;
+          }
+          res.json({
+              "message":"success",
+              "count":rows.length,
+              "data":rows
+          })
+        });
+    
+    
 });
 
 /*

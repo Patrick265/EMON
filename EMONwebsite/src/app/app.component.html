@@ -1,1 +1,19 @@
-<app-smart-sensor-list></app-smart-sensor-list>
+<div id="material-example" style="height: 100%;">
+   
+    <mat-toolbar color="primary">
+        <mat-toolbar-row>
+            <span>Insight knowledge</span> 
+            <span (click)="toList()" style="margin-left: 50px;">List</span>
+            <span style="margin-left: 20px;">Settings</span>
+            <span (click)="refresh()" style="margin-left: 20px;">Refresh</span>
+            <span class="example-spacer"></span>
+            <span>Avans</span>
+        </mat-toolbar-row>
+    </mat-toolbar>
+     
+     <br/>
+        
+     <app-smart-sensor-list *ngIf="detailSensor === ''" (selectedDetail)="itemSelected($event)"></app-smart-sensor-list>
+     <app-detail-view *ngIf="!(detailSensor === '')" [fullMessage]="fullMessage" [sensorName]="detailSensor"></app-detail-view>
+</div>
+
