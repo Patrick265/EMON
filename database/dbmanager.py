@@ -76,6 +76,7 @@ class dbManager:
 			c.execute(self.dbCreateTemperature)
 			c.execute(self.dbSmartmeter)
 			c.execute(self.overviewdb)
+			#self.insert_overview()
 		except Error as e:
 			print(e)
 
@@ -155,3 +156,30 @@ class dbManager:
 		cur.execute("SELECT * FROM iskra_energie ORDER BY id DESC LIMIT 1")
 		result = cur.fetchone()
 		return result
+
+	def insert_overview(self):
+		sql = '''INSERT INTO overview(name, table_name)VALUES(\"Patjon energiemeter\", \"iskra_energie\")'''
+		print(sql)
+		self.insert(sql)
+		sql = '''INSERT INTO overview(name, table_name)VALUES(\"Overige energiemeter\", \"emon_smartmeter\")'''
+		print(sql)
+		self.insert(sql)
+		
+		sql = '''INSERT INTO overview(name, table_name)VALUES(\"Temperatuur Sensor\", \"iskra_temperature\")'''
+		print(sql)
+		self.insert(sql)
+
+
+
+	def insert(self, query):
+		try:
+			cur = self.conn.cursor()
+			result = cur.execute(query)
+			self.conn.commit()
+			result = self.conn.commit()
+			# return cur.lastrowid
+		except Error as e:
+			print(e)
+		except Exception as e:
+			print("Exception in _query: ")
+			print(e)

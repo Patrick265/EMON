@@ -66,20 +66,21 @@ def on_message(client, userdata, message):
 			energymeter_name = str((parsed_js['identification']))
 			watt = parsed_js['watt']
 			wattHour = watt / 12
+			totalkwh = wattHour / 1000
 			signature = str((parsed_js['signature']))
 			dateTimeObj = datetime.now()
 			timestamp = dateTimeObj.strftime("%d-%b-%Y %H:%M:%S")
-			db.insert_iskra_energie(message_id, energymeter_name, watt, wattHour,watt, signature, timestamp)
+			db.insert_iskra_energie(message_id, energymeter_name, watt, wattHour,totalkwh, signature, timestamp)
 		else:
 			energymeter_name = str((parsed_js['identification']))
 			watt = parsed_js['watt']
 			wattHour = watt / 12
-			total = watt + result[5]
+			totalkwh = (wattHour / 1000) + result[5]
 			signature = str((parsed_js['signature']))
 			dateTimeObj = datetime.now()
 			timestamp = dateTimeObj.strftime("%d-%b-%Y %H:%M:%S")
 
-			db.insert_iskra_energie(message_id, energymeter_name, watt, wattHour,total, signature, timestamp)
+			db.insert_iskra_energie(message_id, energymeter_name, watt, wattHour,totalkwh, signature, timestamp)
 			
 	if message_id == "TIMDB_PATJON_EMON_TEMP_SENSOR":
 		outside_temp = parsed_js['watt']
