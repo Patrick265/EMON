@@ -8,53 +8,78 @@
 
 <div class="row">
     <div class="col-xs-6">
-<mat-card style="background-color: #e8eaf6; margin-left: 10px; margin-top: 10px;">
+<mat-card style="background-color: #e8eaf6; margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">
     <mat-card-title>Energy records</mat-card-title>
+    <div *ngIf="iskraData.energyData.length > 0; else elseBlock">
+    <mat-card-subtitle>Energy table</mat-card-subtitle>
     
+    <mat-form-field>
+        <mat-label>Select X-axis scale</mat-label>
+        <mat-select [(value)]="selected" (selectionChange)="onScale()">
+          <mat-option value="1">All</mat-option>
+          <mat-option value="2">Hours</mat-option>
+          <mat-option value="3">Days</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <table>
-            <tr>
-                <td>Id</td>
-                <td>Meter</td>
-                <td>Watt</td>
-                <td>wH</td>
-                <td>Total</td>
-                <td>Time</td>
-            </tr>
-            <tr *ngFor="let item of iskraData.energyData; let i = index">
-                
-              <td> {{item.messageId}} </td>
-              <td> {{item.energyMeter}} </td>
-              <td> {{item.watt}} </td>
-              <td> {{item.wH}} </td>
-              <td> {{item.total}} </td>
-              <td> {{item.timestamp}} </td>
-            </tr>
-          </table>
-
+        <div style="display: block ">
+            <canvas
+             baseChart
+            [chartType]="'line'"
+             [datasets]="chartDatasets"
+             [labels]="chartLabels"
+             [options]="chartOptions"
+              [legend]="true"
+             (chartClick)="onChartClick($event)">
+            </canvas>
+        </div>
+        
+        <mat-card-subtitle style="margin-top: 30px;">Data records</mat-card-subtitle>
+        <div style="overflow-y: scroll; max-height: 300px;">
+            <app-energy-data *ngFor="let item of iskraData.energyData; let i = index" [idata] = "item"></app-energy-data>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <div>
+            <p>No energy data records of {{sensorName}} found</p>
+            <p>Please seed the database with your energy information</p>
+        </div>
+    </ng-template>
      
 </mat-card>
 </div>
 <div class="col-xs-6">
-<mat-card style="background-color: #e8eaf6; margin-right: 10px; margin-top: 10px;">
+<mat-card style="background-color: #e8eaf6; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;">
     <mat-card-title>Temperature records</mat-card-title>
-    <table>
-        <tr>
-            <td>Id</td>
-            <td>Outside temperature</td>
-            <td>Iniside temperature</td>
-            <td>Time</td>
-        </tr>
-        <tr *ngFor="let item of iskraData.temperatureData; let i = index">
-            
-          <td> {{item.messageId}} </td>
-          <td> {{item.outsideTemp}} </td>
-          <td> {{item.insideTemp}} </td>
-          <td> {{item.timestamp}} </td>
-        </tr>
-      </table>
 
+    <div *ngIf="iskraData.temperatureData.length > 0; else elseBlock">
+        <div style="display: block ">
+            <canvas
+             baseChart
+            [chartType]="'line'"
+             [datasets]="chartDataTemp"
+             [labels]="chartLabelsTemp"
+             [options]="chartOptions"
+              [legend]="true"
+             (chartClick)="onChartClick($event)">
+            </canvas>
+        </div>
+    
+    
+        <div style="overflow-y: scroll; max-height: 300px;">
+            <app-energy-data *ngFor="let item of iskraData.temperatureData; let i = index" [idata] = "item"></app-energy-data>
+        </div>
+    </div>
+    <ng-template #elseBlock>
+        <div>
+            <p>No temperature data records of {{sensorName}} found</p>
+            <p>Please seed the database with your temperature information</p>
+        </div>
+    </ng-template>
 
+    
 </mat-card>
 </div>
 </div>
+
+
