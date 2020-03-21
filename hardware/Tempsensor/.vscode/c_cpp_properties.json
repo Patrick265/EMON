@@ -1,0 +1,71 @@
+{
+    "configurations": [
+        {
+            "name": "!!! WARNING !!! AUTO-GENERATED FILE, PLEASE DO NOT MODIFY IT AND USE https://docs.platformio.org/page/projectconf/section_env_build.html#build-flags"
+        },
+        {
+            "name": "Win32",
+            "includePath": [
+                "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/include",
+                "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/src",
+                "C:/Users/Patrick/.platformio/lib/PubSubClient_ID89/src",
+                "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/.pio/libdeps/uno/ArduinoJson/src",
+                "C:/Users/Patrick/.platformio/lib/Ethernet_ID872/src",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/cores/arduino",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/variants/standard",
+                "C:/Users/Patrick/.platformio/lib/ArduinoJson_ID64/src",
+                "C:/Users/Patrick/.platformio/lib/RCSwitch_ID246",
+                "C:/Users/Patrick/.platformio/lib/RadioHead_ID124",
+                "C:/Users/Patrick/.platformio/lib/WifiManager_ID567",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                "C:/Users/Patrick/.platformio/packages/tool-unity",
+                ""
+            ],
+            "browse": {
+                "limitSymbolsToIncludedHeaders": true,
+                "path": [
+                    "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/include",
+                    "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/src",
+                    "C:/Users/Patrick/.platformio/lib/PubSubClient_ID89/src",
+                    "p:/School/Jaar 3/EMON/EMON/hardware/Tempsensor/.pio/libdeps/uno/ArduinoJson/src",
+                    "C:/Users/Patrick/.platformio/lib/Ethernet_ID872/src",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/SPI/src",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/cores/arduino",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/variants/standard",
+                    "C:/Users/Patrick/.platformio/lib/ArduinoJson_ID64/src",
+                    "C:/Users/Patrick/.platformio/lib/RCSwitch_ID246",
+                    "C:/Users/Patrick/.platformio/lib/RadioHead_ID124",
+                    "C:/Users/Patrick/.platformio/lib/WifiManager_ID567",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/EEPROM/src",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/HID/src",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/SoftwareSerial/src",
+                    "C:/Users/Patrick/.platformio/packages/framework-arduino-avr/libraries/Wire/src",
+                    "C:/Users/Patrick/.platformio/packages/tool-unity",
+                    ""
+                ]
+            },
+            "defines": [
+                "PLATFORMIO=40201",
+                "ARDUINO_AVR_UNO",
+                "F_CPU=16000000L",
+                "ARDUINO_ARCH_AVR",
+                "ARDUINO=10808",
+                "__AVR_ATmega328P__",
+                ""
+            ],
+            "intelliSenseMode": "clang-x64",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "compilerPath": "C:/Users/Patrick/.platformio/packages/toolchain-atmelavr/bin/avr-gcc.exe",
+            "compilerArgs": [
+                "-mmcu=atmega328p",
+                ""
+            ]
+        }
+    ],
+    "version": 4
+}

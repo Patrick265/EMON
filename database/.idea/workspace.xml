@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8c5abeb8-fe44-49ac-8e60-c72fa07b3266" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/backup/emonv3.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dbmanager.py" beforeDir="false" afterPath="$PROJECT_DIR$/dbmanager.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/emon.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emonv2.db" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/emonv3.db" beforeDir="false" afterPath="$PROJECT_DIR$/emonv3.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hardware/Xbee Coordinator/include/conn.h" beforeDir="false" afterPath="$PROJECT_DIR$/../hardware/Xbee Coordinator/include/conn.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hardware/Xbee Coordinator/platformio.ini" beforeDir="false" afterPath="$PROJECT_DIR$/../hardware/Xbee Coordinator/platformio.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hardware/Xbee Coordinator/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../hardware/Xbee Coordinator/src/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hardware/Xbee Router/src/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/../hardware/Xbee Router/src/main.cpp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ZPG12np0Et2h5V2QaQsAMT4wHL" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/backup" />
+    <property name="restartRequiresConfirmation" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="P:\School\Jaar 3\EMON\EMON\database\backup" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="P:\School\Jaar 3\EMON\EMON\database\backup" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.py" type="PythonConfigurationType" factoryName="Python">
+      <module name="database" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="C:\Users\Patrick\AppData\Local\Programs\Python\Python37-32\python.exe" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8c5abeb8-fe44-49ac-8e60-c72fa07b3266" name="Default Changelist" comment="" />
+      <created>1584733097021</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1584733097021</updated>
+      <workItem from="1584733119372" duration="14034000" />
+      <workItem from="1584801121017" duration="3000000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1512" y="186" key="#SQL_Dialects" timestamp="1584745501293">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1512" y="186" key="#SQL_Dialects/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584745501293" />
+    <state x="1097" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584745162134">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1097" y="183" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584745162134" />
+    <state x="1127" y="415" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog" timestamp="1584745659699">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1127" y="415" key="#com.jetbrains.python.refactoring.move.PyMoveModuleMembersDialog/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584745659699" />
+    <state x="1423" y="283" key="FileChooserDialogImpl" timestamp="1584745494574">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1423" y="283" key="FileChooserDialogImpl/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584745494574" />
+    <state width="1413" height="351" key="GridCell.Tab.0.bottom" timestamp="1584749720599">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.0.bottom/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720599" />
+    <state width="1413" height="351" key="GridCell.Tab.0.center" timestamp="1584749720599">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.0.center/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720599" />
+    <state width="1413" height="351" key="GridCell.Tab.0.left" timestamp="1584749720599">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.0.left/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720599" />
+    <state width="1413" height="351" key="GridCell.Tab.0.right" timestamp="1584749720599">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.0.right/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720599" />
+    <state width="1413" height="351" key="GridCell.Tab.1.bottom" timestamp="1584749720600">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.1.bottom/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720600" />
+    <state width="1413" height="351" key="GridCell.Tab.1.center" timestamp="1584749720600">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.1.center/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720600" />
+    <state width="1413" height="351" key="GridCell.Tab.1.left" timestamp="1584749720599">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.1.left/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720599" />
+    <state width="1413" height="351" key="GridCell.Tab.1.right" timestamp="1584749720600">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="1413" height="351" key="GridCell.Tab.1.right/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584749720600" />
+    <state width="196" height="457" key="HiddenNamespacesPopup" timestamp="1584745156239">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state width="196" height="457" key="HiddenNamespacesPopup/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584745156239" />
+    <state x="1621" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1584801123442">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1621" y="352" key="com.intellij.ide.util.TipDialog/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584801123442" />
+    <state x="1533" y="126" width="607" height="804" key="find.popup" timestamp="1584803021151">
+      <screen x="0" y="0" width="2560" height="1050" />
+    </state>
+    <state x="1533" y="126" width="607" height="804" key="find.popup/0.0.2560.1050/2560.0.1920.1050@0.0.2560.1050" timestamp="1584803021151" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/database$main_py.coverage" NAME="main.py Coverage Results" MODIFIED="1584749249198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
