@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FullMessage } from '../shared/models/fullMessage.model';
 import { HttpClient } from '@angular/common/http';
-import { SensorData } from '../shared/models/sensorData.model';
 
 @Component({
   selector: 'app-detail-view',
@@ -14,9 +13,6 @@ export class DetailViewComponent implements OnInit {
   constructor(public client: HttpClient,) { }
 
   ngOnInit() {
-    
+    this.fullMessage.version = true;
   }
-
-  
-
 }

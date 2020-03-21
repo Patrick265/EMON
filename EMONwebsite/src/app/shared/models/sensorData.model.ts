@@ -8,6 +8,8 @@ export class SensorData {
     time: string;
     temperature: number;
     humidity: number;
+    wH: number;
+    signature: string;
 
     deserialize(input: any) {
       Object.assign(this, input);

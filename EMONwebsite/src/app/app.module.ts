@@ -21,6 +21,8 @@ import { TemperatureDataComponent } from './detail-view/iskra-detail/temperature
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NormalDetailComponent } from './detail-view/normal-detail/normal-detail.component';
+import { NormalEnergyDataComponent } from './detail-view/normal-detail/normal-energy-data/normal-energy-data.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     DetailViewComponent,
     IskraDetailComponent,
     EnergyDataComponent,
-    TemperatureDataComponent
+    TemperatureDataComponent,
+    NormalDetailComponent,
+    NormalEnergyDataComponent
   ],
   imports: [
     BrowserModule,

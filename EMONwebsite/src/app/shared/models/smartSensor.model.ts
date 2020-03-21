@@ -1,6 +1,7 @@
 export class SmartSensor {
     name: string;
-    original: boolean;
+    tableName: string;
     lastAlive: string;
     total: number;
+    version: boolean;
 }

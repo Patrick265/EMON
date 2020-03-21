@@ -16,20 +16,25 @@ export class AppComponent {
   title = 'EMONwebsite';
   detailSensor: string = "";
   fullMessage: FullMessage = new FullMessage();
+  sendMessage: FullMessage = new FullMessage();;
   constructor(public client: HttpClient,) { }
 
 ngOnInit() {
+
   }
 
   itemSelected(sensor: string) {
     this.detailSensor = sensor;
-    
+    this.fullMessage = new FullMessage();
+    this.fullMessage.dataIskra = new IskraData;
+    this.fullMessage.dataIskra.energyData = new Array<IskraEnergy>();
     if(this.detailSensor == "ISKRA-MT382"){
       console.log("sensor check reached: " + sensor);
+      this.fullMessage.version = true;
       this.getDataIskra();
-      
     }
     else{
+      this.fullMessage.version = false;
       this.getData();
     }
 
@@ -37,7 +42,6 @@ ngOnInit() {
 
 toList(){
   this.detailSensor = "";
-  console.log("reached");
 }
 
 refresh(){
@@ -48,7 +52,7 @@ getDataIskra() {
   this.client.get("http://localhost:8000/api/dataIE").subscribe(val => {
     const json = JSON.parse(JSON.stringify(val));
    
-    this.fullMessage = new FullMessage();
+    
     this.fullMessage.version = true;
     this.fullMessage.message = json["message"];
     this.fullMessage.count = json["count"];
@@ -78,37 +82,33 @@ getDataIskraTemp(){
     for(var i=0; i<json["count"]; i++){
       var sensData: IskraTemp = new IskraTemp();
         sensData.messageId = json["data"][i]["message_id"];
-        sensData.outsideTemp = json["data"][i]["outside_temp"];
-        sensData.insideTemp = json["data"][i]["inside_temp"];
+        sensData.outsideTemp = json["data"][i]["temperature"];
         sensData.signature = json["data"][i]["signature"];
         sensData.timestamp = json["data"][i]["timestamp"];
         this.fullMessage.dataIskra.temperatureData.push(sensData);
     }
-    console.log("version: " + this.fullMessage.version);
+    console.log("amount entries: " + this.fullMessage.dataIskra.temperatureData.length);
+    this.sendMessage = this.fullMessage;
 });
 }
 
 getData() {
   this.client.get("http://localhost:8000/api/data/?sensor=" + this.detailSensor).subscribe(val => {
     const json = JSON.parse(JSON.stringify(val));
-    console.log("real data: " + json["data"][0]["watt"]);
-    console.log("real data: " + json["data"][0]["time"]);
-    console.log("real data: " + json["data"][0]["temperature"]);
-    console.log("real data: " + json["data"][0]["totalEnergy"]);
     this.fullMessage.message = json["message"];
     this.fullMessage.count = json["count"];
     this.fullMessage.data = new Array<SensorData>();
     for(var i=0; i<json["count"]; i++){
       var sensData: SensorData = new SensorData();
         sensData.id = json["data"][i]["id"];
-        sensData.time = json["data"][i]["time"];
-        sensData.temperature = json["data"][i]["temperature"];
-        sensData.humidity = json["data"][i]["humidity"];
+        sensData.time = json["data"][i]["timestamp"];
         sensData.watt = json["data"][i]["watt"];
-        sensData.totalEnergyUse = json["data"][i]["totalEnergy"];
-        sensData.returnedEnergy = json["data"][i]["returnedEnergy"];
+        sensData.totalEnergyUse = json["data"][i]["total"];
+        sensData.wH = json["data"][i]["wH"];
+        sensData.signature = json["data"][i]["signature"];
         this.fullMessage.data.push(sensData);
     }
+    this.sendMessage = this.fullMessage;
 });
 }
 }

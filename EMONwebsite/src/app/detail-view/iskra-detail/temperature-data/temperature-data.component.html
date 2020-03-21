@@ -8,11 +8,9 @@
     </div>
     </div>
     <div class="row" style="background-color: white; margin-left: 5px; margin-right: 5px;">
-        <div class="col-xs-6" style="margin-top: 8px;">
-            <p>Inside temperature: {{idata.insideTemp}} degrees Celsius</p>
-        </div>
-        <div class="col-xs-6">
-            <p style="float: right;" style="margin-top: 8px;">outside temperature: {{idata.outsideTemp}} degrees Celsius</p>
+        
+        <div class="col-xs-12">
+            <p style="margin-top: 8px;">outside temperature: {{idata.outsideTemp | number}} degrees Celsius</p>
         </div>
     </div>
 
