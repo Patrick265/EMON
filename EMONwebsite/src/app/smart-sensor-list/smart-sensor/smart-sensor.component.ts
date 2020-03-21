@@ -24,7 +24,6 @@ export class SmartSensorComponent implements OnInit {
 
   clickedCard() {
     this.detail.emit(this.sensor.name);
-    console.log("emit");
   }
 
 }

@@ -3,7 +3,7 @@ import {Deserializable} from "./deserializable.model";
 import { IskraData } from './iskraData';
 
 export class FullMessage implements Deserializable {
-  version: boolean;
+  version: boolean = true;
   message: string;
   count: number;
   data: Array<SensorData> = [];

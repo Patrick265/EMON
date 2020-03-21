@@ -92,13 +92,15 @@ public chartHovered(e: any): void {
     for(let i  = 0; i<this.iskraData.temperatureData.length; i++){
       this.timestampsT.push(this.iskraData.temperatureData[i].timestamp);
       this.valuesTo.push(this.iskraData.temperatureData[i].outsideTemp);
-      this.valuesTi.push(this.iskraData.temperatureData[i].insideTemp);
+      //this.valuesTi.push(this.iskraData.temperatureData[i].insideTemp);
     }
-    this.chartLabelsTemp = this.clm.getXLabels(this.timestampsT, 2);
+    this.chartLabelsTemp = new Array<string>();
+    this.chartLabelsTemp = this.clm.getXLabels(this.timestampsT, +this.selected);
     this.chartDataTemp = [
-      {data: this.clm.getYLabels(this.chartLabelsTemp, this.timestampsT, this.valuesTo, 2), label: 'Outisde Temperature'},
-      {data: this.clm.getYLabels(this.chartLabelsTemp, this.timestampsT, this.valuesTi, 2), label: 'Insde Temperature'}
+      {data: this.clm.getYLabels(this.chartLabelsTemp, this.timestampsT, this.valuesTo, +this.selected), label: 'Outisde Temperature'}
+      //{data: this.clm.getYLabels(this.chartLabelsTemp, this.timestampsT, this.valuesTi, 2), label: 'Insde Temperature'}
     ];
+    console.log("temp: " + this.iskraData.temperatureData.length);
   }
 
   calculateDataStrings(){

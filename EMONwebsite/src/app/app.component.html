@@ -14,6 +14,6 @@
      <br/>
         
      <app-smart-sensor-list *ngIf="detailSensor === ''" (selectedDetail)="itemSelected($event)"></app-smart-sensor-list>
-     <app-detail-view *ngIf="!(detailSensor === '')" [fullMessage]="fullMessage" [sensorName]="detailSensor"></app-detail-view>
+     <app-detail-view *ngIf="!(detailSensor === '')" [fullMessage]="sendMessage" [sensorName]="detailSensor"></app-detail-view>
 </div>
 

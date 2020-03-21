@@ -43,7 +43,7 @@ app.get("/api/sensors", (req, res, next) => {
 */
 
 app.get("/api/sensors", (req, res, next) => {
-  /*var sql = "select * from smart_sensors"
+  var sql = "select * from overview"
   var params = []
   console.log("[GET] all sensors")
   db.all(sql, params, (err, rows) => {
@@ -53,23 +53,35 @@ app.get("/api/sensors", (req, res, next) => {
       }
       res.json({
           "message":"success",
-          //"count":rows.length,
-          "count":1,
-          //"data":rows
-          "data":[{"name":"ISKRA-MT382","original":"true"}]
+          "count":rows.length,
+          "data":rows
+          //"data":[{"name":"ISKRA-MT382","original":"true"}]
       })
-  });*/
-  res.json({
-    "message":"success",
-    //"count":rows.length,
-    "count":1,
-    //"data":rows
-    "data":[{"name":"ISKRA-MT382","original":"true"}]
-})
+  });
+
 });
 
+app.get("/api/data/?", (req, res, next) => {
+  let sensor = req.query.sensor
+  // For our own original sensor
+    var sql = "SELECT * FROM " + sensor
+    var params = []
+  console.log("[GET] last record from sensor: " + sensor)
+  db.all(sql, params, (err, rows) => {
+      if (err) {
+        res.status(400).json({"error":err.message});
+        return;
+      }
+      res.json({
+          "message":"success",
+          "count":rows.length,
+          "data":rows
+      })
+    });
+  
+});
 
-// Gets the last record (last alive) from a specefic sensor. Needs parameter: sensor=
+// Gets the last record (last alive) from a specefic sensor. Needs parameter: sensor= (and tablename for not original sensor)
 app.get("/api/last/?", (req, res, next) => {
     let sensor = req.query.sensor
     // For our own original sensor
@@ -90,7 +102,8 @@ app.get("/api/last/?", (req, res, next) => {
     }
     else{
       // For non original sensors
-    /*var sql = "SELECT * FROM " + sensor + " ORDER BY ID DESC LIMIT 1"
+      let tablename = req.query.tableName
+    var sql = "SELECT * FROM " + tablename + " ORDER BY ID DESC LIMIT 1"
     var params = []
     console.log("[GET] last record from sensor: " + sensor)
     db.all(sql, params, (err, rows) => {
@@ -102,7 +115,7 @@ app.get("/api/last/?", (req, res, next) => {
             "message":"success",
             "data":rows
         })
-      });*/
+      });
     }
 });
 

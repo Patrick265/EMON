@@ -1,7 +1,9 @@
 
-<div *ngIf="fullMessage.version">
+<div *ngIf="fullMessage.version && fullMessage.dataIskra">
     <app-iskra-detail [iskraData]="fullMessage.dataIskra" [sensorName]="sensorName"></app-iskra-detail>
 </div>
 
 
-<div *ngIf="!fullMessage.version">Show other</div>
+<div *ngIf="!fullMessage.version && fullMessage.data">
+    <app-normal-detail [data]="fullMessage.data" [sensorName]="sensorName"></app-normal-detail>
+</div>
