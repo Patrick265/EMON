@@ -38,7 +38,7 @@ export class ChartLabelMaker{
           for(let i = 0; i<this.chartData.length; i++){
               if(this.counter[i] !== 0){
                   this.chartData[i] = this.chartData[i]/this.counter[i];
-                  console.log("data: " + this.chartData[i]);
+                  
               }
           }
           reDat.push(this.chartData);
@@ -63,7 +63,7 @@ export class ChartLabelMaker{
               for(let i = 0; i<this.chartData.length; i++){
                   if(this.counter[i] !== 0){
                       this.chartData[i] = this.chartData[i]/this.counter[i];
-                      console.log("data: " + this.chartData[i]);
+                      
                   }
               }
               reDat.push(this.chartData);
@@ -92,7 +92,7 @@ export class ChartLabelMaker{
           for(let i = 0; i<this.chartData.length; i++){
               if(this.counter[i] !== 0){
                   this.chartData[i] = this.chartData[i]/this.counter[i];
-                  console.log("data: " + this.chartData[i]);
+                  
               }
           }
           reDat.push(this.chartData);
@@ -117,7 +117,7 @@ export class ChartLabelMaker{
               for(let i = 0; i<this.chartData.length; i++){
                   if(this.counter[i] !== 0){
                       this.chartData[i] = this.chartData[i]/this.counter[i];
-                      console.log("data: " + this.chartData[i]);
+                      
                   }
               }
               reDat.push(this.chartData);
@@ -146,7 +146,7 @@ export class ChartLabelMaker{
           for(let i = 0; i<this.chartData.length; i++){
               if(this.counter[i] !== 0){
                   this.chartData[i] = this.chartData[i]/this.counter[i];
-                  console.log("data: " + this.chartData[i]);
+                  
               }
           }
           reDat.push(this.chartData);
@@ -171,7 +171,7 @@ export class ChartLabelMaker{
               for(let i = 0; i<this.chartData.length; i++){
                   if(this.counter[i] !== 0){
                       this.chartData[i] = this.chartData[i]/this.counter[i];
-                      console.log("data: " + this.chartData[i]);
+                      
                   }
               }
               reDat.push(this.chartData);

@@ -63,7 +63,12 @@ toExtra(){
 }
 
 refresh(){
- 
+  this.smartSensors = new Array<SmartSensor>();
+  this.fullMessage = new FullMessage();
+  this.fullMessage.dataIskra = new IskraData;
+  this.fullMessage.dataIskra.energyData = new Array<IskraEnergy>();
+this.fullMessage.position.push("ISKRA_MT382");
+this.getSensors();
 }
 
 getDataIskra() {
