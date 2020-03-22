@@ -15,33 +15,51 @@ import { IskraTemp } from './shared/models/iskraTemp';
 export class AppComponent {
   title = 'EMONwebsite';
   detailSensor: string = "";
+  smartSensors: Array<SmartSensor> = new Array<SmartSensor>();
   fullMessage: FullMessage = new FullMessage();
-  sendMessage: FullMessage = new FullMessage();;
+  sendMessage: FullMessage = new FullMessage();
+  position: number;
+  choice: number = 1;
   constructor(public client: HttpClient,) { }
 
 ngOnInit() {
-
+  this.fullMessage = new FullMessage();
+    this.fullMessage.dataIskra = new IskraData;
+    this.fullMessage.dataIskra.energyData = new Array<IskraEnergy>();
+  this.fullMessage.position.push("ISKRA_MT382");
+this.getSensors();
   }
 
   itemSelected(sensor: string) {
     this.detailSensor = sensor;
-    this.fullMessage = new FullMessage();
-    this.fullMessage.dataIskra = new IskraData;
-    this.fullMessage.dataIskra.energyData = new Array<IskraEnergy>();
-    if(this.detailSensor == "ISKRA-MT382"){
+    
+    if(this.detailSensor == "ISKRA_MT382"){
       console.log("sensor check reached: " + sensor);
+      
       this.fullMessage.version = true;
-      this.getDataIskra();
+      
     }
     else{
       this.fullMessage.version = false;
-      this.getData();
+      this.position = this.fullMessage.position.indexOf(sensor)-1;
+      console.log("posittion: " + this.position);
     }
 
 }
 
 toList(){
   this.detailSensor = "";
+  this.choice = 1;
+}
+
+toOverview(){
+  this.detailSensor = "";
+  this.choice = 2;
+}
+
+toExtra(){
+  this.detailSensor = "";
+  this.choice = 3;
 }
 
 refresh(){
@@ -92,12 +110,12 @@ getDataIskraTemp(){
 });
 }
 
-getData() {
-  this.client.get("http://localhost:8000/api/data/?sensor=" + this.detailSensor).subscribe(val => {
+getData(nam: string) {
+  this.client.get("http://localhost:8000/api/data/?sensor=" + nam).subscribe(val => {
     const json = JSON.parse(JSON.stringify(val));
     this.fullMessage.message = json["message"];
     this.fullMessage.count = json["count"];
-    this.fullMessage.data = new Array<SensorData>();
+    var dat: Array<SensorData> =  new Array<SensorData>();
     for(var i=0; i<json["count"]; i++){
       var sensData: SensorData = new SensorData();
         sensData.id = json["data"][i]["id"];
@@ -106,9 +124,44 @@ getData() {
         sensData.totalEnergyUse = json["data"][i]["total"];
         sensData.wH = json["data"][i]["wH"];
         sensData.signature = json["data"][i]["signature"];
-        this.fullMessage.data.push(sensData);
+        dat.push(sensData);
     }
+    this.fullMessage.data.push(dat);
+    this.fullMessage.position.push(nam);
     this.sendMessage = this.fullMessage;
+});
+}
+
+ // Gets all the sensornames that are saved in the database and have an own table. Later this list should be clickable by user and then get data
+ getSensors(){
+  this.client.get("http://localhost:8000/api/sensors").subscribe(val => {
+  const json = JSON.parse(JSON.stringify(val));
+  for(var i=0; i<json["count"]; i++){
+    var smartSensor: SmartSensor = new SmartSensor();
+    smartSensor.name = json["data"][i]["name"];
+    smartSensor.tableName = json["data"][i]["table_name"];
+    if(smartSensor.tableName === "original"){
+      smartSensor.version = true;
+      this.getDataIskra();
+    }
+    else{
+      this.getData(smartSensor.tableName);
+
+      smartSensor.version = false;
+    }
+    this.getFullSensor(smartSensor);
+  }
+});
+}
+
+// Gets the last alive value for a specific sensor and pushes the entire sensor to the smartSensor array for later use
+getFullSensor(sensor: SmartSensor){
+this.client.get("http://localhost:8000/api/last/?sensor=" + sensor.name + "&tableName=" + sensor.tableName).subscribe(val => {
+  const json = JSON.parse(JSON.stringify(val));
+  sensor.lastAlive = json["data"][0]["timestamp"];
+  sensor.total = json["data"][0]["total"];
+  this.smartSensors.push(sensor);
+  console.log("sens added");
 });
 }
 }

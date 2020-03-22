@@ -1,0 +1,58 @@
+<div class="row">
+    <div class="col-xs-10">
+    <mat-card style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #e8eaf6;;">
+        <mat-card-title>Overview of watt used per hour</mat-card-title>
+        <div style="display: block ">
+            <canvas
+             baseChart
+            [chartType]="'line'"
+             [datasets]="chartDatasets"
+             [labels]="chartLabels"
+             [options]="chartOptions"
+              [legend]="true"
+             (chartClick)="onChartClick($event)">
+            </canvas>
+        </div>
+    </mat-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-10">
+    <mat-card style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #e8eaf6;;">
+        <mat-card-title>Overview of total wh used</mat-card-title>
+        <div style="display: block ">
+            <canvas
+             baseChart
+            [chartType]="'line'"
+             [datasets]="chartDatasetsTotal"
+             [labels]="chartLabels"
+             [options]="chartOptions"
+              [legend]="true"
+             (chartClick)="onChartClick($event)">
+            </canvas>
+        </div>
+    </mat-card>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-10">
+    <mat-card style="margin-left: 10px; margin-right: 10px; margin-bottom: 10px; background-color: #e8eaf6;">
+        <mat-card-title>Overview of wH used per hour</mat-card-title>
+        <div style="display: block ">
+            <canvas
+             baseChart
+            [chartType]="'line'"
+             [datasets]="chartDatasetswH"
+             [labels]="chartLabels"
+             [options]="chartOptions"
+              [legend]="true"
+             (chartClick)="onChartClick($event)">
+            </canvas>
+        </div>
+    </mat-card>
+    </div>
+</div>
+
+

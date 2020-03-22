@@ -10,9 +10,9 @@ import { HttpClient } from '@angular/common/http';
 export class DetailViewComponent implements OnInit {
   @Input() sensorName: string = "notLoaded"; 
   @Input() fullMessage: FullMessage = new FullMessage();
+  @Input() position: number = 0;
   constructor(public client: HttpClient,) { }
 
   ngOnInit() {
-    this.fullMessage.version = true;
   }
 }

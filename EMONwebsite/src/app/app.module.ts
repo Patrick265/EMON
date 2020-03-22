@@ -23,6 +23,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { NormalDetailComponent } from './detail-view/normal-detail/normal-detail.component';
 import { NormalEnergyDataComponent } from './detail-view/normal-detail/normal-energy-data/normal-energy-data.component';
+import {OverviewComponent } from './overview/overview.component';
+import {ExtraComponent} from './extra/extra.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { NormalEnergyDataComponent } from './detail-view/normal-detail/normal-en
     EnergyDataComponent,
     TemperatureDataComponent,
     NormalDetailComponent,
-    NormalEnergyDataComponent
+    NormalEnergyDataComponent,
+    OverviewComponent,
+    ExtraComponent
   ],
   imports: [
     BrowserModule,

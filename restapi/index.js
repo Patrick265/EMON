@@ -85,7 +85,7 @@ app.get("/api/data/?", (req, res, next) => {
 app.get("/api/last/?", (req, res, next) => {
     let sensor = req.query.sensor
     // For our own original sensor
-    if(sensor === "ISKRA-MT382"){
+    if(sensor === "ISKRA_MT382"){
       var sql = "SELECT * FROM " + "iskra_energie ORDER BY ID DESC LIMIT 1"
       var params = []
     console.log("[GET] last record from sensor: " + sensor)
@@ -145,7 +145,7 @@ app.get("/api/dataIE", (req, res, next) => {
 app.get("/api/dataIT", (req, res, next) => {
   console.log("[GET] data from sensor: ")
     let sensor = req.query.sensor
-      var sql = "select * from iskra_temperature"
+      var sql = "select * from iskra_temperature WHERE id%10 = 0"
       var params = []
       console.log("[GET] data from sensor: " + sensor)
       db.all(sql, params, (err, rows) => {

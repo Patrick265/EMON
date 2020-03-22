@@ -5,5 +5,5 @@
 
 
 <div *ngIf="!fullMessage.version && fullMessage.data">
-    <app-normal-detail [data]="fullMessage.data" [sensorName]="sensorName"></app-normal-detail>
+    <app-normal-detail [data]="fullMessage.data[position]" [sensorName]="sensorName"></app-normal-detail>
 </div>

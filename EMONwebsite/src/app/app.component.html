@@ -1,19 +1,38 @@
-<div id="material-example" style="height: 100%;">
-   
-    <mat-toolbar color="primary">
-        <mat-toolbar-row>
-            <span>Insight knowledge</span> 
-            <span (click)="toList()" style="margin-left: 50px;">List</span>
-            <span style="margin-left: 20px;">Settings</span>
-            <span (click)="refresh()" style="margin-left: 20px;">Refresh</span>
-            <span class="example-spacer"></span>
-            <span>Avans</span>
-        </mat-toolbar-row>
-    </mat-toolbar>
-     
-     <br/>
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+        <span>Insight knowledge</span> 
+        <p style="margin-top: 50px; font-size: 65%; margin-left: 60px;">By Patrick de Jong & Tim de Booij</p>
+        <span class="example-spacer"></span>
+        <mat-icon (click)="toList()" aria-hidden="false" aria-label="Example home icon">home</mat-icon>
+    </mat-toolbar-row>
+</mat-toolbar>
+
+<div style="height: 100%;">
+<mat-drawer-container class="example-container" style="height: 100%;">
+    <mat-drawer mode="side" opened style="width: 100px; background-color: #e0e0e0; height: 100%;">
         
-     <app-smart-sensor-list *ngIf="detailSensor === ''" (selectedDetail)="itemSelected($event)"></app-smart-sensor-list>
-     <app-detail-view *ngIf="!(detailSensor === '')" [fullMessage]="sendMessage" [sensorName]="detailSensor"></app-detail-view>
+        <mat-sidenav-container style="background-color: #e0e0e0; height: 100%;">
+            <h4 *ngIf="choice === 1" (click)="toList()" style="margin-left: 5px; margin-right: 5px; background-color: #3f51b5; padding: 5px; text-align: center;">List</h4>
+            <h4 *ngIf="choice !== 1" (click)="toList()" style="margin-left: 5px; margin-right: 5px; background-color: #8c9eff; padding: 5px; text-align: center;">List</h4>
+            <h4 *ngIf="choice === 2"(click)="toOverview()" style="margin-left: 5px; margin-right: 5px; background-color: #3f51b5; padding: 5px; text-align: center;">Overview</h4>
+            <h4 *ngIf="choice !== 2"(click)="toOverview()" style="margin-left: 5px; margin-right: 5px; background-color: #8c9eff; padding: 5px; text-align: center;">Overview</h4>
+            <h4 *ngIf="choice === 3" (click)="toExtra()" style="margin-left: 5px; margin-right: 5px; background-color: #3f51b5; padding: 5px; text-align: center;">Extra</h4>
+            <h4 *ngIf="choice !== 3" (click)="toExtra()" style="margin-left: 5px; margin-right: 5px; background-color: #8c9eff; padding: 5px; text-align: center;">Extra</h4>
+        </mat-sidenav-container>
+
+    </mat-drawer>
+    <mat-drawer-content>
+        
+        <div id="material-example" style="height: 100%; margin-top: 10px;">
+
+            <app-smart-sensor-list [smartSensors]="smartSensors" *ngIf="detailSensor === '' && choice === 1" (selectedDetail)="itemSelected($event)"></app-smart-sensor-list>
+            <app-detail-view *ngIf="!(detailSensor === '') && choice === 1" [position]="position" [fullMessage]="fullMessage" [sensorName]="detailSensor"></app-detail-view>
+            <app-overview *ngIf="choice === 2" [data]="fullMessage"></app-overview>
+            <app-extra *ngIf="choice === 3"></app-extra>
+       </div>
+
+    </mat-drawer-content>
+  </mat-drawer-container>
 </div>
+
 
