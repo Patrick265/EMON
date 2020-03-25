@@ -2,7 +2,7 @@
 #define CONN_H_
 
 #define SSID			"DaVinkie"
-#define SSID_PASS		"2FC62ADC33AF"
+#define SSID_PASS		" "
 
 // #define MQTT_SERVER		"sendlab.avansti.nl"
 // #define MQTT_PORT		11883
